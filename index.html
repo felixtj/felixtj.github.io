@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellix Tjong | AI Automation Partner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --bg-sub: #f8fafc;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --accent: #0f172a;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-sub);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .portfolio-frame {
+            width: 95vw;
+            max-width: 1200px;
+            height: 85vh;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        .brand-section {
+            padding: 4rem 3rem;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #fff;
+        }
+
+        .brand-header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            margin-bottom: 0.75rem;
+            line-height: 1;
+        }
+
+        .brand-header p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .nav-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .nav-list li {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list li::before {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            margin-right: 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list li:hover,
+        .nav-list li.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .nav-list li:hover::before,
+        .nav-list li.active::before {
+            width: 20px;
+            margin-right: 12px;
+        }
+
+        .content-viewport {
+            height: 100%;
+            padding: 0;
+            position: relative;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .tab-pane {
+            display: none;
+            height: 100%;
+            width: 100%;
+            padding: 4rem 4rem 6rem 4rem;
+            overflow-y: auto;
+            animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2.5rem;
+            background: #f1f5f9;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* Project Grid Items */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            background: #fff;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .project-card .desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .project-tag {
+            background: var(--bg-sub);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        /* Contact Details */
+        .contact-content {
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            font-size: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .info-item h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .info-item p {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Scrollbar */
+        .tab-pane::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .tab-pane::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .tab-pane::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 1000px) {
+            .portfolio-frame {
+                grid-template-columns: 1fr;
+                height: 95vh;
+            }
+
+            .brand-section {
+                padding: 2rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-list {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 1rem;
+            }
+
+            .nav-list li {
+                margin: 0;
+                font-size: 0.9rem;
+            }
+
+            .tab-pane {
+                padding: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="portfolio-frame">
+        <aside class="brand-section">
+            <div class="brand-header">
+                <h1>Fellix<br>Tjong</h1>
+                <p>AI Automation Partner for Small Businesses. Delivering fast, practical solutions to simplify
+                    workflows.</p>
+
+                <ul class="nav-list">
+                    <li class="active" onclick="switchTab(event, 'about')">Mission</li>
+                    <li onclick="switchTab(event, 'projects')">Automation Wins</li>
+                    <li onclick="switchTab(event, 'contact')">Get in Touch</li>
+                </ul>
+            </div>
+
+            <div class="brand-footer">
+                <p style="font-size: 0.8rem; color: var(--text-muted);">© 2026</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">New Zealand</p>
+            </div>
+        </aside>
+
+        <main class="content-viewport">
+
+            <section id="about" class="tab-pane active">
+                <h2>Simplifying business through automation.</h2>
+                <p class="section-desc">
+                    I'm a full-stack web developer with over 5 years of hands-on experience building custom business
+                    applications — from CRM and warehouse systems to AI-powered tools and internal dashboards. I thrive
+                    at the intersection of problem-solving, user experience, and efficient development.
+
+                    My background includes building both frontend and backend systems, and I’ve worked with clients
+                    across different industries to deliver scalable, cloud-based solutions tailored to their needs. As a
+                    self-taught developer, I'm constantly learning and enjoy exploring new technologies that make
+                    development faster and smarter.
+
+                </p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4>Approach</h4>
+                        <p>Understand, Design, Build, Refine.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Focus</h4>
+                        <p>Immediate impact & minimal disruption.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="tab-pane">
+                <h2>Automation Wins</h2>
+                <p class="section-desc">Practical AI solutions and custom automation built for immediate impact.</p>
+
+                <div class="project-list">
+                    <div class="project-card">
+                        <h3>Surfgold Indonesia</h3>
+                        <p class="desc">A comprehensive internal CRM/PRM application for vendors to track performance,
+                            manage sales, and monitor distribution with a reward point system.</p>
+                        <div class="project-footer">
+                            <span class="project-tag">CRM / Web App</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Warehouse Management</h3>
+                        <p class="desc">Cloud-based WMS designed for multi-location logistics, ensuring streamlined
+                            inbound and outbound inventory tracking.</p>
+                        <div class="project-footer">
+                            <span class="project-tag">Logic / WMS</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Sodaoffice</h3>
+                        <p class="desc">Field team management solution for HVAC businesses with real-time scheduling and
+                            team coordination.</p>
+                        <div class="project-footer">
+                            <span class="project-tag">Logistics</span>
+                        </div>
+                    </div>
+
+
+                    <div class="project-card">
+                        <h3>SodaDesk</h3>
+                        <p class="desc">Agentic AI optimized workforce management solution empowering field service
+                            contractors with invoicing, scheduling, and team coordination.</p>
+                        <div class="project-footer">
+                            <span class="project-tag">SaaS / Logistics</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>RAG Chatbot</h3>
+                        <p class="desc">An AI chatbot that answers questions about a company's products and services.
+                        </p>
+                        <div class="project-footer">
+                            <span class="project-tag">AI / CRM</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Snapstudioai</h3>
+                        <p class="desc">An AI product photography assistant that transforms product photos into styled
+                            concepts.</p>
+                        <div class="project-footer">
+                            <span class="project-tag">AI / E-commerce</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Data Merger Script</h3>
+                        <p class="desc">Custom Google Apps Script automating data consolidation by merging three
+                            separate sheets into a single master reporting dashboard.</p>
+                        <div class="project-footer">
+                            <span class="project-tag">Scripts / Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="tab-pane">
+                <h2>Let's build something efficient.</h2>
+                <p class="section-desc">Ready to simplify your business workflows? Let's start a conversation.</p>
+
+                <div class="contact-content">
+                    <div id="email-container">
+                        <span id="email" class="contact-link">Loading...</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <h4>Phone</h4>
+                            <p id="phone">Loading...</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Location</h4>
+                            <p>New Zealand</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Availability</h4>
+                            <p>Available for new AI automation projects.</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Social</h4>
+                            <p><a href="https://www.linkedin.com/in/fellix-tj">LinkedIn</a></p>
+                            <p><a href="https://github.com/felixtj">GitHub</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function switchTab(e, tabId) {
+            // Remove active states
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-list li').forEach(l => l.classList.remove('active'));
+
+            // Set new active states
+            document.getElementById(tabId).classList.add('active');
+            e.currentTarget.classList.add('active');
+
+            // Scroll to top of pane
+            document.getElementById(tabId).scrollTop = 0;
+        }
+
+        // Anti-spam protection
+        window.addEventListener('DOMContentLoaded', () => {
+            // Email display with delay and charCode encoding
+            setTimeout(() => {
+                const email = String.fromCharCode(
+                    102, 101, 108, 108, 105, 120, 46, 110, 112, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109
+                );
+                const el = document.getElementById("email");
+                if (el) {
+                    el.innerHTML = `<a href="mailto:${email}" style="color: inherit; text-decoration: inherit;">${email}</a>`;
+                }
+            }, 1000); // Reduced to 1s for better UX while maintaining bot protection
+
+            // Phone display with delay and charCode encoding
+            setTimeout(() => {
+                const phone = String.fromCharCode(43, 54, 52, 32, 50, 55, 52, 56, 52, 50, 51, 50, 50);
+                const el = document.getElementById("phone");
+                if (el) {
+                    el.innerHTML = phone;
+                }
+            }, 800);
+        });
+    </script>
+</body>
+
+</html>
