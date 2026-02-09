@@ -198,6 +198,15 @@
             letter-spacing: -0.5px;
         }
 
+        .project-card h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .project-card h3 a:hover {
+            text-decoration: underline;
+        }
+
         .project-card .desc {
             font-size: 0.9rem;
             color: var(--text-muted);
@@ -330,7 +339,7 @@
 
             <div class="brand-footer">
                 <p style="font-size: 0.8rem; color: var(--text-muted);">© 2026</p>
-                <p style="font-size: 0.75rem; color: var(--text-muted);">New Zealand</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Indonesia</p>
             </div>
         </aside>
 
@@ -384,7 +393,7 @@
                         </div>
                     </div>
                     <div class="project-card">
-                        <h3>Sodaoffice</h3>
+                        <h3><a href="https://www.sodaoffice.co" target="_blank" rel="noopener noreferrer">Sodaoffice</a></h3>
                         <p class="desc">Field team management solution for HVAC businesses with real-time scheduling and
                             team coordination.</p>
                         <div class="project-footer">
@@ -394,7 +403,7 @@
 
 
                     <div class="project-card">
-                        <h3>SodaDesk</h3>
+                        <h3><a href="https://sodadesk.com" target="_blank" rel="noopener noreferrer">SodaDesk</a></h3>
                         <p class="desc">Agentic AI optimized workforce management solution empowering field service
                             contractors with invoicing, scheduling, and team coordination.</p>
                         <div class="project-footer">
@@ -412,7 +421,7 @@
                     </div>
 
                     <div class="project-card">
-                        <h3>Snapstudioai</h3>
+                        <h3><a href="https://snapstudioai.com" target="_blank" rel="noopener noreferrer">Snapstudioai</a></h3>
                         <p class="desc">An AI product photography assistant that transforms product photos into styled
                             concepts.</p>
                         <div class="project-footer">
@@ -428,6 +437,13 @@
                             <span class="project-tag">Scripts / Automation</span>
                         </div>
                     </div>
+                    <div class="project-card">
+                        <h3>US Accounting Firm</h3>
+                        <p class="desc">A specialized CRM and accounting portal for a US-based CPA firm, automating tax compliance, client communication, and financial data management.</p>
+                        <div class="project-footer">
+                            <span class="project-tag">CRM / Accounting</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -441,14 +457,6 @@
                     </div>
 
                     <div class="info-grid">
-                        <div class="info-item">
-                            <h4>Phone</h4>
-                            <p id="phone">Loading...</p>
-                        </div>
-                        <div class="info-item">
-                            <h4>Location</h4>
-                            <p>New Zealand</p>
-                        </div>
                         <div class="info-item">
                             <h4>Availability</h4>
                             <p>Available for new AI automation projects.</p>
@@ -492,14 +500,6 @@
                 }
             }, 1000); // Reduced to 1s for better UX while maintaining bot protection
 
-            // Phone display with delay and charCode encoding
-            setTimeout(() => {
-                const phone = String.fromCharCode(43, 54, 52, 32, 50, 55, 52, 56, 52, 50, 51, 50, 50);
-                const el = document.getElementById("phone");
-                if (el) {
-                    el.innerHTML = phone;
-                }
-            }, 800);
         });
     </script>
 </body>
