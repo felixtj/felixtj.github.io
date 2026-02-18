@@ -165,6 +165,45 @@
             margin-bottom: 2rem;
         }
 
+        .services-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-sub);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--border);
+            transform: translateY(-2px);
+        }
+
+        .service-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .services-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Project Grid Items */
         .project-list {
             display: grid;
@@ -332,7 +371,7 @@
 
                 <ul class="nav-list">
                     <li class="active" onclick="switchTab(event, 'about')">Mission</li>
-                    <li onclick="switchTab(event, 'projects')">Automation Wins</li>
+                    <li onclick="switchTab(event, 'projects')">Portfolio & Services</li>
                     <li onclick="switchTab(event, 'contact')">Get in Touch</li>
                 </ul>
             </div>
@@ -371,8 +410,24 @@
             </section>
 
             <section id="projects" class="tab-pane">
-                <h2>Automation Wins</h2>
-                <p class="section-desc">Practical AI solutions and custom automation built for immediate impact.</p>
+                <h2>Portfolio & Services</h2>
+                <p class="section-desc">Delivering impact through expert Website Design, Software Development, and
+                    Intelligent Automation.</p>
+
+                <div class="services-section">
+                    <div class="service-card">
+                        <h4>Website Design</h4>
+                        <p>Responsive, aesthetic, and high-performance websites tailored to your brand.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Software Development</h4>
+                        <p>Custom web applications, internal tools, and scalable software solutions.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>AI Automation</h4>
+                        <p>Smart workflows and agents to reduce manual tasks and optimize efficiency.</p>
+                    </div>
+                </div>
 
                 <div class="project-list">
                     <div class="project-card">
